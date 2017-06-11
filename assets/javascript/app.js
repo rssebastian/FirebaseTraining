@@ -67,27 +67,20 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
  	//Turn the First Travel Time into a moment object
  	//Subtract 1 day to ensure the first time is earlier than current time since we don't care about actual date values
  	var firstTT = moment(trainFirstTT, "HH:mm A").subtract(1, "day");
- 	console.log("firstTT = "+ firstTT);
 
  	//Calculate the difference between the First Travel Time and the Current Time in minutes
  	var trainDiff = moment().diff(moment(firstTT), "minutes");
- 	console.log("trainDiff ="+ trainDiff);
 
  	//Calculate the remainder between the difference calculated aboive and the train's frequency
- 	//
  	var trainRemainder = trainDiff % trainFrequency;
- 	console.log("trainRemainder" + trainRemainder);
 
- 	//Calculate the difference between the frequency and the remainder
- 	//
-
+ 	//Calculate the difference between the frequency and the remainder, which will be the amount of minutes until the next train
  	var trainNextMinutes = trainFrequency - trainRemainder;
- 	console.log("trainNextMinutes =" + trainNextMinutes)
+ 	
 
  	//Add the minutes left until the next train to the current time
- 	var trainNext = moment().add(trainNextMinutes, "minutes").format("HH:mm A");
- 	console.log("trainNext =" + trainNext);
-
+ 	var trainNext = moment().add(trainNextMinutes, "minutes").format("hh:mm A");
+ 	
  	// Add the train data into the table
   	$("#addedTrain").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + trainNext + "</td><td>" + trainNextMinutes + "</td></tr>");
 
