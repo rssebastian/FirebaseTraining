@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Train Scheduler</title>
+	
+	<!--Link to Firebase Database-->
+	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+
+	<!-- Link to moment.js -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+	<!--Call Bootstrap CSS-->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!--Bootswatch Layout-->
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
+
+	<!--Call jQuery-->
+	<script src="https://code.jquery.com/jquery-3.2.1.js"</script>
+
+	<!--Call Bootstrap JS-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	
+</head>
+
+<body>
+	<!--Wrap Page in Container to Provide Margins-->
+	<div class="container">
+
+		<!--Page Intro Div-->
+		<div class="jumbotron">
+			<center><h2>Anytime is Train Time!</h2><br>
+			<h3>Choo choo, you know what to do</h3></center>
+		</div>
+
+		<!--Current Train Schedule Div, will hold all submitted train data-->
+		<div class="panel panel-primary">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Current Train Schedule</h3>
+  			</div>
+  			
+  			<div class="panel-body">
+    			<table class="table" id="trainTable">
+  					<thead>
+	  					<tr>
+	  						<th>Train Name</th>
+	  						<th>Destination</th>
+	  						<th>Frequency (min)</th>
+	  						<th>Next Arrival</th>
+	  						<th>Minutes Away</th>
+	  					</tr>
+	  				</thead>
+					
+					<!--Provided id for body of table so we can append new data to it later-->
+	  				<tbody id="addedTrain"></tbody>
+				</table>
+  			</div>
+		</div>
+
+		<!--Add Train Div, will gather user inputs-->
+		<div class="panel panel-primary">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Add Train</h3>
+  			</div>
+  			
+  			<div class="panel-body">
+    			<form role="form">
+              		<div class="form-group">
+                		<label for="name-input">Train Name</label>
+                		<input class="form-control" id="name-input" type="text">
+              		</div>
+              		
+              		<div class="form-group">
+                		<label for="destination-input">Destination</label>
+                		<input class="form-control" id="destination-input" type="text">
+              		</div>
+              
+              		<div class="form-group">
+                		<label for="firstTT-input">First Train Time (HH:mm military time)</label>
+                		<input class="form-control" id="firstTT-input" type="text">
+              		</div>
+              
+              		<div class="form-group">
+                		<label for="frequency-input">Frequency (min)</label>
+                		<input class="form-control" id="frequency-input" type="text"></input>
+              		</div>
+              
+              		<button class="btn btn-primary" id="add-train" type="submit">Submit</button>
+            	</form>
+          	</div>
+  		</div>
+	</div>
+</div>
+
+<!--Connect to created app.js file-->
+<script src="assets/javascript/app.js"></script>
+
+</body>
+</html>
